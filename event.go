@@ -98,7 +98,7 @@ func (e *Event) Create(ctx context.Context, body *CreateEventRequest) (*EventRes
 	}
 
 	respPtr := &EventResponse{}
-	err = postJSON(ctx, e.client, url, body, respPtr)
+	err = postJSON(ctx, e.client, url, body, nil)
 	if err != nil {
 		return nil, err
 	}

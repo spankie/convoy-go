@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/http/httputil"
 )
@@ -123,6 +124,7 @@ func parseAPIResponse(c *Client, resp *http.Response, resultPtr interface{}) err
 	}
 
 	if resultPtr != nil {
+		log.Printf("response data: %v\n len: %v", *response.Data, len(*response.Data))
 		err = json.Unmarshal(*response.Data, resultPtr)
 		if err != nil {
 			return fmt.Errorf("error while unmarshalling the response data bytes %+v ", err)
